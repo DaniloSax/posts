@@ -14,7 +14,22 @@ class BaseLayoutState extends State<BaseLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.blue),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        titleSpacing: 10,
+        leadingWidth: 100,
+        leading: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Image.asset(
+            'images/logo_2022_v1.png',
+          ),
+        ),
+        toolbarHeight: 100,
+        title: Text(
+          'Notícias'.toUpperCase(),
+          style: const TextStyle(color: Colors.black),
+        ),
+      ),
       body: widget.content,
     );
   }
