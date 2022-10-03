@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_list/layout/base_layout.dart';
 import 'package:task_list/models/post_model.dart';
+import 'package:task_list/pages/posts/screen_argument.dart';
 import 'package:task_list/repositories/post_repository.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,7 +26,9 @@ class _HomePageState extends State<HomePage> {
         }
 
         return ListView.separated(
-          separatorBuilder: (context, index) => const Divider(),
+          separatorBuilder: (context, index) => const Divider(
+            color: Color.fromARGB(137, 119, 117, 117),
+          ),
           itemCount: snapshot.data!.length,
           itemBuilder: ((context, index) {
             final List<Post> posts = snapshot.data ?? [];
@@ -46,7 +49,13 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.red,
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/post',
+                        arguments: ScreenArgumentPost(post: post),
+                      );
+                    },
                     icon: const Icon(Icons.edit),
                     color: Colors.blue,
                   ),
